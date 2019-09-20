@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const routes = require('./core/application/routes.js');
+const setting = require('../src/settings.js');
 const app = express();
 // middlewares
 app.use(compression());
@@ -20,6 +21,6 @@ routes(app);
 app.get('*', (req,res)=>{
     res.sendFile(path.join(__dirname+'/web/public/views/index.html'));
 })
-app.listen(4646,()=>{
-    console.log('Server Listening on 4646')
+app.listen(setting.APP_PORT,()=>{
+    console.log(`Server Listening on ${setting.APP_PORT} `)
 });
