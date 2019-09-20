@@ -4,7 +4,8 @@
   "description": "code challenge",
   "main": "server.js",
   "scripts": {
-    "build-dev": "webpack --config webpack.config.js --mode development"
+    "build-dev": "webpack --config webpack.config.js --mode development",
+    "start":"node src/server.js"
   },
   "author": "Ramon Victor",
   "license": "ISC",
