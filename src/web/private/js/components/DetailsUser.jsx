@@ -25,19 +25,20 @@ class DetailsUser extends Component {
     if(!this.props.show){
       return <div></div>;
     }
+
     if(this.state.user.login == undefined){
       this.fetchData();
     }
     return (
       <div className={'divDetails'}>
+        <div className={'closeButton'} onClick={this.props.toggle}>X</div>
         <h1>Id: {this.state.user.id}</h1>
         <h1>Avatar profile: {this.state.user.avatar_url}</h1>
         <h1>Login: {this.state.user.login}</h1>
         <h1>Created at: {this.state.user.created_at}</h1>
-        <UserRepositorie></UserRepositorie>
+        <UserRepositorie username={this.state.user}></UserRepositorie>
       </div>
     )
-    
   }
 }
 export default DetailsUser;

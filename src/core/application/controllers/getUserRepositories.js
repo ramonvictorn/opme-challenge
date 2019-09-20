@@ -6,7 +6,7 @@ async function getUserRepositorie(req,res){
         return;
     }
     let context = {
-        username : req.query.username,
+        username : req.params.username,
     }
     let bodyReturned = await getUserRepositorieOnGitHubService(context);
     res.send({data:bodyReturned})

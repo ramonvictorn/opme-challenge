@@ -14,8 +14,12 @@ class UserList extends Component {
         }
         this.getMore = this.getMore.bind(this);
         this.toggleDetails = this.toggleDetails.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
     }
-
+    toggleModal(){
+        let newShowCurrent = !this.state.showDetailsUser;
+        this.setState({ showDetailsUser:newShowCurrent});
+    }
     toggleDetails(idx){
         console.log('toggleDetails ', idx, this.state.showDetailsUser);
         this.setState({ currentUser:idx });
@@ -36,7 +40,12 @@ class UserList extends Component {
             users = [...this.state.users,...users]
             this.setState({ users });
             this.setState({ nextPage });
-        })      
+        }).catch(
+            err=>{
+                console.log('erro')
+                this.setState({ users: 'error' });
+            }
+        )        
     }
     componentDidMount() {
         this.fetchData(this.state.nextPage)
@@ -44,16 +53,19 @@ class UserList extends Component {
 
     render() {
         console.log('render UserLIst -> ', this.state )
-        let users = this.state.users.map((ele,idx)=>{
-            return <User
-                key={idx} 
-                user={ele}
-                show={()=>{this.toggleDetails(idx)}}
-            ></User>
-        })
+        let users = this.state.users != 'error' 
+            ? this.state.users.map((ele,idx)=>{
+                return <User
+                    key={idx} 
+                    user={ele}
+                    show={()=>{this.toggleDetails(idx)}}
+                ></User>
+                })
+            :  <h1>Ocorreu um erro, tento novamente mais tarde :(</h1>
+            
         return <React.Fragment>
             <h1>GitHub users list</h1>
-            <DetailsUser show={this.state.showDetailsUser} user={this.state.users[this.state.currentUser]}></DetailsUser>
+            <DetailsUser toggle={()=>this.toggleModal()} show={this.state.showDetailsUser} user={this.state.users[this.state.currentUser]}></DetailsUser>
             {users}
             <button onClick={this.getMore}>Get more</button>
         </React.Fragment>

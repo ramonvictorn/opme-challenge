@@ -18,13 +18,16 @@ async function getUsersOnGitHub({sinceId}){
     //     console.log('parts ', parts)
     // }
     if(bodyReturned.error){
-        return dataToReturn.error = 'ERROR_ON_REQUEST'; 
+        dataToReturn.error = 'ERROR_ON_REQUEST';
+        return dataToReturn;
     }
     dataToReturn = {
-         nextPage: bodyReturned.headers && bodyReturned.headers.link 
+        data : {
+            nextPage: bodyReturned.headers && bodyReturned.headers.link 
             ? bodyReturned.headers.link.split(';')[0].replace('<', '').replace('>', '') 
             : 0,
-        users : bodyReturned.body,
+            users : bodyReturned.body,
+        }
     }
     return dataToReturn; 
 }

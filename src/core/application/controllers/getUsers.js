@@ -9,7 +9,11 @@ async function getUsers(req,res){
         sinceId : req.query.since,
     }
     let bodyReturned = await getUsersOnGitHubService(context);
-    res.send({data:bodyReturned})
+    if(bodyReturned.error){
+        res.status(400).send({error:'OCORREU UM ERRO'});
+        return;
+    }
+    res.send({data:bodyReturned.data})
 }
 
 

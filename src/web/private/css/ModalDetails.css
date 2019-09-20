@@ -13,3 +13,11 @@
 .userList{
     text-align: center;
 }
+
+.closeButton{
+    font-size: 25px;
+}
+.divDetails table {
+    text-align: center;
+    margin: 0 auto;
+}
