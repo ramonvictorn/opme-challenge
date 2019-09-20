@@ -1,0 +1,16 @@
+{
+  "name": "opme-challenge",
+  "version": "1.0.0",
+  "description": "code challenge",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ramon Victor",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "request": "^2.88.0"
+  }
+}
