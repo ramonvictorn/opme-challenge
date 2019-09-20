@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import User from '../presentational/User.js';
-import DetailsUser from '../presentational/DetailsUser.js'
+import DetailsUser from '../components/DetailsUser.jsx'
 
 class UserList extends Component {
     constructor(){
@@ -17,9 +17,11 @@ class UserList extends Component {
     }
 
     toggleDetails(idx){
-        console.log('toggleDetails ', idx)
+        console.log('toggleDetails ', idx, this.state.showDetailsUser);
         this.setState({ currentUser:idx });
-        // this.setState({ showDetailsUser:!this.state.showDetailsUser });
+        let newShowCurrent = !this.state.showDetailsUser;
+        console.log('newShowCurrent ', newShowCurrent);
+        this.setState({ showDetailsUser:newShowCurrent});
     }
 
     getMore(){
@@ -43,17 +45,15 @@ class UserList extends Component {
     render() {
         console.log('render UserLIst -> ', this.state )
         let users = this.state.users.map((ele,idx)=>{
-            console.log('idx ->', idx)
             return <User
                 key={idx} 
                 user={ele}
                 show={()=>{this.toggleDetails(idx)}}
             ></User>
         })
-        let DetailsUser = this.state.showDetailsUser ? <DetailsUser></DetailsUser> : '';
         return <React.Fragment>
-            <h1>My React listtt</h1>
-            {DetailsUser}
+            <h1>GitHub users list</h1>
+            <DetailsUser show={this.state.showDetailsUser} user={this.state.users[this.state.currentUser]}></DetailsUser>
             {users}
             <button onClick={this.getMore}>Get more</button>
         </React.Fragment>

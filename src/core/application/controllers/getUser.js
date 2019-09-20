@@ -6,7 +6,7 @@ async function getUser(req,res){
         return;
     }
     let context = {
-        username : req.query.username,
+        username : req.params.username,
     }
     let bodyReturned = await getUserOnGitHubService(context);
     res.send({data:bodyReturned})

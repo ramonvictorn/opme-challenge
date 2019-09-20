@@ -14,8 +14,7 @@ async function httpClient({url,method}){
                 // resolve("ERRO_ON_REQUEST");
                 console.log('ERROR_ON_REQUEST');
                 resolve({
-                    body:{},
-                    headers:{},
+                    error:'ERROR_ON_REQUEST',
                 });
             }
             resolve({

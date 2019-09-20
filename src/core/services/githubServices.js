@@ -7,12 +7,23 @@ module.exports = {
     getUserRepositorieOnGitHub,
 }
 async function getUsersOnGitHub({sinceId}){
+    dataToReturn= {};
     let bodyReturned = await httpClient({
         url:`http://api.github.com/users?since=${sinceId}`,
         method: 'GET'
     });
-    let dataToReturn = {
-        nextPage: bodyReturned.headers && bodyReturned.headers.link ? bodyReturned.headers.split(';')[0].replace('<', '').replace('>', '') : 0,
+    // if(bodyReturned.headers && bodyReturned.headers.link){
+    //     let parts = bodyReturned.headers.link.split(';')
+    //     // [0].replace('<', '').replace('>', '') 
+    //     console.log('parts ', parts)
+    // }
+    if(bodyReturned.error){
+        return dataToReturn.error = 'ERROR_ON_REQUEST'; 
+    }
+    dataToReturn = {
+         nextPage: bodyReturned.headers && bodyReturned.headers.link 
+            ? bodyReturned.headers.link.split(';')[0].replace('<', '').replace('>', '') 
+            : 0,
         users : bodyReturned.body,
     }
     return dataToReturn; 
