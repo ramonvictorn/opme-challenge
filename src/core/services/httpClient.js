@@ -11,7 +11,12 @@ async function httpClient({url,method}){
     return new Promise((resolve,reject) => {
         request(option, function (error, response, body) {
             if(response && response.statusCode != 200){
-                resolve("ERRO_ON_REQUEST");
+                // resolve("ERRO_ON_REQUEST");
+                console.log('ERROR_ON_REQUEST');
+                resolve({
+                    body:{},
+                    headers:{},
+                });
             }
             resolve({
                 body:JSON.parse(response.body),

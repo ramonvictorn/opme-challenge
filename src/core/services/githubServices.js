@@ -12,7 +12,7 @@ async function getUsersOnGitHub({sinceId}){
         method: 'GET'
     });
     let dataToReturn = {
-        nextPage: bodyReturned.headers.link.split(';')[0].replace('<', '').replace('>', ''),
+        nextPage: bodyReturned.headers && bodyReturned.headers.link ? bodyReturned.headers.split(';')[0].replace('<', '').replace('>', '') : 0,
         users : bodyReturned.body,
     }
     return dataToReturn; 
