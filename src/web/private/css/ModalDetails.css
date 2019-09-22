@@ -3,7 +3,7 @@
     width: 600px;
     height: 500px;
     position: fixed;
-    top: 50%;
+    top: 25%;
     left: 50%;
     margin-top: -100px;
     margin-left: -300px;
@@ -20,4 +20,9 @@
 .divDetails table {
     text-align: center;
     margin: 0 auto;
+}
+
+.divTable {
+    height: 250px;
+    overflow-y: auto;
 }

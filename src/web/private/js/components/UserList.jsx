@@ -15,16 +15,21 @@ class UserList extends Component {
         this.getMore = this.getMore.bind(this);
         this.toggleDetails = this.toggleDetails.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
     toggleModal(){
         let newShowCurrent = !this.state.showDetailsUser;
         this.setState({ showDetailsUser:newShowCurrent});
     }
+    closeModal(){
+        let newShowCurrent = !this.state.showDetailsUser;
+        this.setState({ showDetailsUser:newShowCurrent});
+    }
     toggleDetails(idx){
-        console.log('toggleDetails ', idx, this.state.showDetailsUser);
+        // console.log('toggleDetails ', idx, this.state.showDetailsUser);
         this.setState({ currentUser:idx });
         let newShowCurrent = !this.state.showDetailsUser;
-        console.log('newShowCurrent ', newShowCurrent);
+        // console.log('newShowCurrent ', newShowCurrent);
         this.setState({ showDetailsUser:newShowCurrent});
     }
 
@@ -52,7 +57,7 @@ class UserList extends Component {
     }
 
     render() {
-        console.log('render UserLIst -> ', this.state )
+        // console.log('render UserLIst -> ', this.state )
         let users = this.state.users != 'error' 
             ? this.state.users.map((ele,idx)=>{
                 return <User
@@ -65,7 +70,7 @@ class UserList extends Component {
             
         return <React.Fragment>
             <h1>GitHub users list</h1>
-            <DetailsUser toggle={()=>this.toggleModal()} show={this.state.showDetailsUser} user={this.state.users[this.state.currentUser]}></DetailsUser>
+            <DetailsUser closeModal={this.closeModal} toggle={()=>this.toggleModal()} show={this.state.showDetailsUser} user={this.state.users[this.state.currentUser]}></DetailsUser>
             {users}
             <button onClick={this.getMore}>Get more</button>
         </React.Fragment>
