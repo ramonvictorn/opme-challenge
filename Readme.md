@@ -6,9 +6,9 @@
 # To run:
 In code directory run:
 
-`npm install  `
-`npm install -D  `
-`node src/server.js  `
+`npm install  `  
+`npm install -D  `  
+`node src/server.js  `  
 
 And see on **localhost:4646**
 
