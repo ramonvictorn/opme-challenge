@@ -12,11 +12,6 @@ async function getUsersOnGitHub({sinceId}){
         url:`http://api.github.com/users?since=${sinceId}`,
         method: 'GET'
     });
-    // if(bodyReturned.headers && bodyReturned.headers.link){
-    //     let parts = bodyReturned.headers.link.split(';')
-    //     // [0].replace('<', '').replace('>', '') 
-    //     console.log('parts ', parts)
-    // }
     if(bodyReturned.error){
         dataToReturn.error = 'ERROR_ON_REQUEST';
         return dataToReturn;

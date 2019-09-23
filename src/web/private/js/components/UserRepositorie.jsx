@@ -12,22 +12,14 @@ class UserRepositorie extends Component {
     fetchData(){
         axios.get(`/api/users/${this.props.username}/repos`)
             .then(res => {
-                // console.log('fetch repo ', res.data)
             let repos = res.data.data.repositories;
-            // let nextPage = res.data.data.nextPage.split('=')[1];
-            // repos = [...this.state.users,...users]
             this.setState({ repos });
         })      
     }
     getRepositories(){
-        // console.log('getRepositories');
         this.fetchData();
     }
     render(){
-        // console.log('UserRepositorie render props ', this.props , 'state - > ', this.state)
-        // if(this.state.repos.length == 0){
-        //     this.fetchData();
-        // }
         let lines =  this.state.repos.length   
             ? this.state.repos.map((el,index)=>{
                 return <tr key={index}><td>{el.id}</td><td>{el.name}</td><td><a target='_blank' href={el.html_url}>{el.html_url}</a></td></tr>

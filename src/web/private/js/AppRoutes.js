@@ -8,8 +8,6 @@ function AppRouter() {
     return (
       <Router>
           <Route path="/" component={ListUser} />
-          {/* <Route path="/users/" component={Users} /> */}
-          {/* <Route path="/" exact component={Index} /> */}
       </Router>
     );
   }

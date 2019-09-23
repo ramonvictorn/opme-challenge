@@ -1,3 +1,4 @@
+@import './ModalDetails.css';
 :focus {
     outline: 0;
 }
@@ -14,4 +15,3 @@ input[type=search] {
     border: 0;
     box-sizing: border-box
 }
-@import './ModalDetails.css';
