@@ -30,7 +30,7 @@ class UserRepositorie extends Component {
         // }
         let lines =  this.state.repos.length   
             ? this.state.repos.map((el,index)=>{
-                return <tr key={index}><td>{el.id}</td><td>{el.name}</td><td>{el.git_url}</td></tr>
+                return <tr key={index}><td>{el.id}</td><td>{el.name}</td><td><a target='_blank' href={el.html_url}>{el.html_url}</a></td></tr>
             })
             : <tr><td></td><td></td><td></td></tr>
         return (
@@ -38,7 +38,9 @@ class UserRepositorie extends Component {
                 <div className={'divTable'}>
                     <table border="1" className={'tableStyle'}><tbody><tr><td>ID</td><td>Name</td><td>Url</td></tr>{lines}</tbody></table>
                 </div>
-                <button onClick={this.getRepositories}>Buscar repositórios</button>
+                <div className={'getRepositoriesButton'}>
+                    <button onClick={this.getRepositories}>Get repositories</button>
+                </div>
             </React.Fragment>
         )
     }

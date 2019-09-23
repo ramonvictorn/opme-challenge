@@ -1,6 +1,6 @@
-.divDetails{
+/* .divDetails{
     background-color: beige;
-    width: 600px;
+    width: 750px;
     height: 500px;
     position: fixed;
     top: 25%;
@@ -8,6 +8,11 @@
     margin-top: -100px;
     margin-left: -300px;
     font-size: 12px;
+    text-align: left;
+} */
+.divDetails h1 {
+    font-weight: normal;
+    font-size: 10px;
 }
 
 .userList{
@@ -16,6 +21,11 @@
 
 .closeButton{
     font-size: 25px;
+    text-align: center;
+    cursor: pointer;
+}
+.closeButton:hover {
+    color: #002bff;
 }
 .divDetails table {
     text-align: center;
@@ -25,4 +35,41 @@
 .divTable {
     height: 250px;
     overflow-y: auto;
+}
+
+.getRepositoriesButton{
+    display: flex;
+    justify-content: center;
+}
+
+.getRepositoriesButton button {
+
+	background-color:#002bff;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size: 12px;
+    padding: 9px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.myButton:hover {
+	background-color:#5cbf2a;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.errorWarn {
+    color: #ff0000;
+}
+
+.lineUser:hover{
+    background-color: #002bff;
+    cursor: pointer;
 }

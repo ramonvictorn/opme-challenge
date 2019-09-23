@@ -7,7 +7,7 @@ import ListUser from './views/ListUsers.jsx'
 function AppRouter() {
     return (
       <Router>
-          <Route path="/users" component={ListUser} />
+          <Route path="/" component={ListUser} />
           {/* <Route path="/users/" component={Users} /> */}
           {/* <Route path="/" exact component={Index} /> */}
       </Router>
