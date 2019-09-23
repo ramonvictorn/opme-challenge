@@ -7,6 +7,27 @@ module.exports = {
         path: path.resolve(__dirname, "src/web/public/assets/js"),
         filename: "index.js"
     },
+    performance: { hints: false },
+    watch: false,
+    optimization: {
+      namedModules: false,
+      namedChunks: false,
+      nodeEnv: 'production',
+      flagIncludedChunks: true,
+      occurrenceOrder: true,
+      sideEffects: true,
+      usedExports: true,
+      concatenateModules: true,
+      splitChunks: {
+        hidePathInfo: true,
+        minSize: 30000,
+        maxAsyncRequests: 5,
+        maxInitialRequests: 3,
+      },
+      noEmitOnErrors: true,
+      checkWasmTypes: true,
+      minimize: true,
+    },
   module: {
     rules: [
       {
@@ -22,8 +43,8 @@ module.exports = {
       }
     ]
   },
-  watch: true,
-  watchOptions: {
-    ignored: /node_modules/
-  }
+  // watch: true,
+  // watchOptions: {
+  //   ignored: /node_modules/
+  // }
 };
